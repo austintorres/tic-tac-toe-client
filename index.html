@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe Project</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,64 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h3>Welcome To Tic-Tac-Toe</h3>
+
+      <section>
+      <form id="sign-up">
+        <input required placeholder="Enter e-mail here" type="text" name="credentials[email]">
+        <input placeholder="Enter password here" type="password" name="credentials[password]">
+        <input placeholder="Re-enter password" type="password" name="credentials[password_confirmation]">
+        <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+      </form>
+      </section>
+
+      <section>
+      <form id="sign-in">
+        <input required placeholder="Enter e-mail here" type="text" name="credentials[email]">
+        <input placeholder="Enter password here" type="password" name="credentials[password]">
+        <button type="submit" class="btn btn-outline-primary">Sign In</button>
+      </form>
+      </section>
+
+      <section>
+      <form id="change-password">
+        <input required placeholder="Old password" type="password" name="passwords[old]">
+        <input placeholder="New password" type="password" name="passwords[new]">
+        <button type="submit" class="btn btn-outline-primary">Change Password</button>
+      </form>
+      </section>
+
+      <section>
+        <form id="sign-out">
+          <button type="submit" class="btn btn-outline-primary">Sign Out</button>
+        </form>
+      </section>
+
+      <p id='message'></p>
+
+      <div class="container" id="game-board">
+        <div class="row">
+          <div class="col-4 box" id="one" data-cell-index='0'></div>
+          <div class="col-4 box" id="two" data-cell-index='0'></div>
+          <div class="col-4 box" id="three" data-cell-index='0'></div>
+          <div class="col-4 box" id="four" data-cell-index='0'></div>
+          <div class="col-4 box" id="five" data-cell-index='0'></div>
+          <div class="col-4 box" id="six" data-cell-index='0'></div>
+          <div class="col-4 box" id="seven" data-cell-index='0'></div>
+          <div class="col-4 box" id="eight" data-cell-index='0'></div>
+          <div class="col-4 box" id="nine" data-cell-index='0'></div>
+        </div>
+      </div>
+
+      <div>
+        <form id='new-game'>
+          <button type="submit" class="btn btn-outline-primary">New Game</button>
+        </form>
+      </div>
+      <div>
+        <form id='game-stats'>
+          <button type="submit" class="btn btn-outline-primary">Game Stats</button>
+        </form>
+      </div>
     </body>
 </html>
