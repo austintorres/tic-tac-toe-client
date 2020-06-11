@@ -1,6 +1,7 @@
 const config = require('./../config')
 const store = require('./../store')
 
+// creating a new game
 const gamesCreate = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -26,7 +27,7 @@ const gamesShow = function (gameId) {
   })
 }
 
-const gamesUpdate = function (data) {
+const gamesUpdate = function () {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
@@ -36,10 +37,10 @@ const gamesUpdate = function (data) {
     data: {
       game: {
         cell: {
-          index: data,
-          value: data
+          index: 0,
+          value: 'x'
         },
-        over: data
+        over: false
       }
     }
   })

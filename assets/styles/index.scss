@@ -1,5 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+section {
+  text-align: center;
+}
+
+p {
+  text-align: center
+}
+
 .failure {
   color: red
 }
@@ -8,8 +21,27 @@
   color: green
 }
 
-.box {
-  height: 200px;
-  width: 200px;
-  border: 2px solid black;
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 300px;
+  margin: 50px auto;
+}
+
+.tile {
+  font-family: "Comic Sans MS";
+  width: 100px;
+  height: 100px;
+  background-color: gold;
+  border: 2px solid #fff;
+  line-height: 100px;
+  font-size: 60px;
+}
+
+.tile:hover {
+  background-color: lightgrey;
+}
+
+.new-game, .game-stats {
+  display: inline-block;
 }

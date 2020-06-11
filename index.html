@@ -12,64 +12,94 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h3>Welcome To Tic-Tac-Toe</h3>
+      <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand">Tic Tac Toe Game</a>
+      </nav>
 
+      <!-- sign up form -->
       <section>
       <form id="sign-up">
         <input required placeholder="Enter e-mail here" type="text" name="credentials[email]">
         <input placeholder="Enter password here" type="password" name="credentials[password]">
         <input placeholder="Re-enter password" type="password" name="credentials[password_confirmation]">
-        <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+        <button type="submit" class="btn btn-dark">Sign Up</button>
       </form>
       </section>
 
+      <!-- sign in form -->
       <section>
       <form id="sign-in">
         <input required placeholder="Enter e-mail here" type="text" name="credentials[email]">
         <input placeholder="Enter password here" type="password" name="credentials[password]">
-        <button type="submit" class="btn btn-outline-primary">Sign In</button>
+        <button type="submit" class="btn btn-dark">Sign In</button>
       </form>
       </section>
 
+      <!-- change password form -->
       <section>
       <form id="change-password">
         <input required placeholder="Old password" type="password" name="passwords[old]">
         <input placeholder="New password" type="password" name="passwords[new]">
-        <button type="submit" class="btn btn-outline-primary">Change Password</button>
+        <button type="submit" class="btn btn-dark">Change Password</button>
       </form>
       </section>
 
+      <!-- sign out button -->
       <section>
         <form id="sign-out">
-          <button type="submit" class="btn btn-outline-primary">Sign Out</button>
+          <button type="submit" class="btn btn-dark">Sign Out</button>
         </form>
       </section>
 
       <p id='message'></p>
 
-      <div class="container" id="game-board">
+      <!-- players turn message -->
+      <p id='player-turn'></p>
+
+      <!-- game board -->
+      <div class="game-container" id="game-board">
         <div class="row">
-          <div class="col-4 box" id="one" data-cell-index='0'></div>
-          <div class="col-4 box" id="two" data-cell-index='0'></div>
-          <div class="col-4 box" id="three" data-cell-index='0'></div>
-          <div class="col-4 box" id="four" data-cell-index='0'></div>
-          <div class="col-4 box" id="five" data-cell-index='0'></div>
-          <div class="col-4 box" id="six" data-cell-index='0'></div>
-          <div class="col-4 box" id="seven" data-cell-index='0'></div>
-          <div class="col-4 box" id="eight" data-cell-index='0'></div>
-          <div class="col-4 box" id="nine" data-cell-index='0'></div>
+          <div class="tile" data-cell-index='0'></div>
+          <div class="tile" data-cell-index='1'></div>
+          <div class="tile" data-cell-index='2'></div>
+          <div class="tile" data-cell-index='3'></div>
+          <div class="tile" data-cell-index='4'></div>
+          <div class="tile" data-cell-index='5'></div>
+          <div class="tile" data-cell-index='6'></div>
+          <div class="tile" data-cell-index='7'></div>
+          <div class="tile" data-cell-index='8'></div>
         </div>
       </div>
 
-      <div>
+      <section>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <form id='new-game'>
+            <button id='new-game' type="submit" class="btn btn-dark">New Game</button>
+          </form>
+          <form id='game-stats'>
+            <button id='game-stats' type="submit" class="btn btn-dark">Game Stats</button>
+          </form>
+        </div>
+      <!-- new game button -->
+      <!-- <div class="new-game">
         <form id='new-game'>
           <button type="submit" class="btn btn-outline-primary">New Game</button>
         </form>
-      </div>
-      <div>
+      </div> -->
+
+      <!-- start game button -->
+      <!-- <div class="start-game">
+        <form id='start-game'>
+          <button type="submit" class="btn btn-outline-primary">Start Game</button>
+        </form>
+      </div> -->
+
+      <!-- game stats button -->
+      <!-- <div class="game-stats">
         <form id='game-stats'>
           <button type="submit" class="btn btn-outline-primary">Game Stats</button>
         </form>
-      </div>
+      </div> -->
+    </section>
     </body>
 </html>

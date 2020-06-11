@@ -4,16 +4,15 @@ curl "${API}/games/${ID}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token=${TOKEN} \
+  --header "Authorization: Token token=${TOKEN}" \
   --data '{
     "game": {
       "cell": {
-        "index": 0,
-        "value": "x"
+        "index": "'"${INDEX}"'",
+        "value": "'"${VALUE}"'"
       },
-      "over": false
-  }
-}
+      "over": "'"${OVER}"'"
+    }
   }'
 
-  echo
+echo

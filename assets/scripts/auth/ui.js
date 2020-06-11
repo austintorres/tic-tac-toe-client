@@ -24,9 +24,9 @@ const signInSuccess = function (response) {
   $('#sign-in').hide()
   $('#change-password').show()
   $('#sign-out').show()
-  $('#new-game').show()
   $('#game-stats').show()
   $('#game-board').show()
+  $('#new-game').show()
 }
 
 const signInFailure = function () {
@@ -62,6 +62,8 @@ const signOutSuccess = function (response) {
   $('#sign-out').hide()
   $('#play-game').hide()
   $('#new-game').hide()
+  $('#game-board').hide()
+  $('#game-stats').hide()
 }
 
 const signOutFailure = function (response) {
