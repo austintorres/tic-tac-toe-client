@@ -1,5 +1,4 @@
 const config = require('./../config')
-
 const store = require('./../store.js')
 
 // User sign up
@@ -38,6 +37,18 @@ const userSignIn = function (data) {
   })
 }
 
+// user sign out
+const signOut = function (formData) {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/sign-out',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+// change password
 const changePassword = function (formData) {
   return $.ajax({
     method: 'PATCH',
@@ -54,10 +65,59 @@ const changePassword = function (formData) {
   })
 }
 
-const signOut = function (formData) {
+// creating a new game
+const gamesCreate = function (formData) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+  })
+}
+
+// games index
+const gamesIndex = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET'
+  })
+}
+
+// show game
+const gamesShow = function (gameId) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games' + gameId
+  })
+}
+
+// all game updates
+const gamesUpdate = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game._id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: 0,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
+// destroy game
+const gamesDelete = function () {
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/sign-out',
+    url: config.apiUrl + '/games',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -68,5 +128,10 @@ module.exports = {
   userCreate: userCreate,
   userSignIn: userSignIn,
   changePassword: changePassword,
-  signOut: signOut
+  signOut: signOut,
+  gamesCreate: gamesCreate,
+  gamesIndex: gamesIndex,
+  gamesShow: gamesShow,
+  gamesUpdate: gamesUpdate,
+  gamesDelete: gamesDelete
 }
