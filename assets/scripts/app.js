@@ -23,4 +23,5 @@ $(() => {
   $('#game-stats').hide()
   $('#game-board').hide()
   $('.tile').on('click', authEvents.onGamesUpdate)
+  $('#game-title').hide()
 })

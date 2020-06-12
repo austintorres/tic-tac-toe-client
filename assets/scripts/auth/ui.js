@@ -27,6 +27,8 @@ const signInSuccess = function (response) {
   $('#game-stats').show()
   $('#game-board').show()
   $('#new-game').show()
+  $('h1').hide()
+  $('#game-title').show()
 }
 
 const signInFailure = function () {
@@ -74,10 +76,12 @@ const signOutFailure = function (response) {
 }
 
 const newGameSuccess = (response) => {
-  $('message').text('New game has begun!')
-  $('.row').show()
+  $('form').trigger('reset')
+  $('#game-start').text('New game has begun!')
+  $('#game-board').show()
+  $('#game-start').show().removeClass().addClass('success')
   store.game = response.game
-  console.log(response)
+  console.log(response, 'this a game!')
 }
 
 const newGameFailure = function () {
