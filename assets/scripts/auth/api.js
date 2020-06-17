@@ -104,8 +104,8 @@ const gamesUpdate = function () {
     data: {
       game: {
         cell: {
-          index: 0,
-          value: 'x'
+          index: store.currentIndex,
+          value: store.currentPlayer
         },
         over: false
       }

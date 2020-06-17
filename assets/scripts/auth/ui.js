@@ -25,7 +25,6 @@ const signInSuccess = function (response) {
   $('#change-password').show()
   $('#sign-out').show()
   $('#game-stats').show()
-  $('#game-board').show()
   $('#new-game').show()
   $('#sign-in-message').hide()
   $('#game-title').show()
@@ -80,11 +79,10 @@ const signOutFailure = function (response) {
 
 const newGameSuccess = (response) => {
   $('form').trigger('reset')
-  $('#game-start').text('New game has begun!')
   $('#game-board').show()
-  $('#game-start').show().removeClass().addClass('success')
+  $('#game-start').text('New game has begun!').show().removeClass().addClass('success')
   store.game = response.game
-  console.log(response, 'this a game!')
+  console.log(response, 'this game started!')
 }
 
 const newGameFailure = function () {
@@ -99,6 +97,12 @@ const gameUpdateSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Move was valid!')
   $('#message').show().removeClass().addClass('success')
+  store.game = response.game
+  if (store.currentPlayer === 'x') {
+    store.currentPlayer = 'o'
+  } else {
+    store.currentPlayer = 'x'
+  }
 }
 
 const gameUpdateFailure = function () {

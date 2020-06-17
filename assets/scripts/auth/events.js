@@ -1,7 +1,7 @@
 'use strict'
 const api = require('./api')
 const ui = require('./ui')
-// const store = require('./../store')
+const store = require('./../store')
 const getFormFields = require('../../../lib/get-form-fields.js')
 const cells = ['', '', '', '', '', '', '', '', '']
 
@@ -60,6 +60,8 @@ const onSignOut = function (event) {
 const onGamesCreate = function (event) {
   // prevent refresh
   event.preventDefault()
+  $('.tile').text('')
+  store.currentPlayer = 'x'
   const form = event.target
   const data = getFormFields(form)
   api.gamesCreate(data)
@@ -67,17 +69,16 @@ const onGamesCreate = function (event) {
     .catch(ui.newGameFailure)
 }
 
-let currentPlayer = 'X'
+// let currentPlayer = 'X'
+// let gamesIndex =
 
 const onGamesUpdate = function (event) {
   // prevent refresh
   event.preventDefault()
-  $(event.target).text(currentPlayer)
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
-  }
+  $(event.target).text(store.currentPlayer)
+  store.currentIndex = $(event.target).data('cell-index')
+  console.log(store.currentIndex)
+
   api.gamesUpdate()
     .then(ui.gameUpdateSuccess)
     .catch(ui.gameUpdateFailure)
