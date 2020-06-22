@@ -98,10 +98,10 @@ const gameUpdateSuccess = function (response) {
   $('#message').text('Move was valid!')
   $('#message').show().removeClass().addClass('success')
   store.game = response.game
-  if (store.currentPlayer === 'x') {
-    store.currentPlayer = 'o'
+  if (store.currentPlayer === 'X') {
+    store.currentPlayer = 'O'
   } else {
-    store.currentPlayer = 'x'
+    store.currentPlayer = 'X'
   }
 }
 
@@ -111,6 +111,10 @@ const gameUpdateFailure = function () {
   $('#message').text('Move not valid!')
   $('#message').show().removeClass().addClass('failure')
 }
+
+// const checkTurn = function () {
+//     if(store.game.cells[i])
+// }
 
 module.exports = {
   createSuccess: createSuccess,

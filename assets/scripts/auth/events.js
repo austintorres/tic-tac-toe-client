@@ -5,7 +5,6 @@ const store = require('./../store')
 const getFormFields = require('../../../lib/get-form-fields.js')
 const cells = ['', '', '', '', '', '', '', '', '']
 
-// winning combos
 const gameWinnings = [
   [0, 1, 2],
   [3, 4, 5],
@@ -61,7 +60,7 @@ const onGamesCreate = function (event) {
   // prevent refresh
   event.preventDefault()
   $('.tile').text('')
-  store.currentPlayer = 'x'
+  store.currentPlayer = 'X'
   const form = event.target
   const data = getFormFields(form)
   api.gamesCreate(data)
@@ -69,15 +68,47 @@ const onGamesCreate = function (event) {
     .catch(ui.newGameFailure)
 }
 
-// let currentPlayer = 'X'
-// let gamesIndex =
-
 const onGamesUpdate = function (event) {
   // prevent refresh
   event.preventDefault()
-  $(event.target).text(store.currentPlayer)
+  store.game.cells[$(event.target).data('cell-index')] = store.currentPlayer
   store.currentIndex = $(event.target).data('cell-index')
   console.log(store.currentIndex)
+  $(event.target).text(store.currentPlayer)
+
+  // if (store.game.cells[0] === 'x' && store.game.cells[1] === 'x' && store.game.cells[2] === 'x') {
+  //   return true
+  // } else {
+  //   (store.game.cells[3] === 'x' && store.game.cells[4] === 'x' && store.game.cells[5] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[6] === 'x' && store.game.cells[7] === 'x' && store.game.cells[8] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[0] === 'x' && store.game.cells[3] === 'x' && store.game.cells[6] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[6] === 'x' && store.game.cells[7] === 'x' && store.game.cells[8] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[1] === 'x' && store.game.cells[4] === 'x' && store.game.cells[7] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[2] === 'x' && store.game.cells[5] === 'x' && store.game.cells[8] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[0] === 'x' && store.game.cells[4] === 'x' && store.game.cells[8] === 'x')
+  //     return true
+  // } if else {
+  //   (store.game.cells[2] === 'x' && store.game.cells[4] === 'x' && store.game.cells[6] === 'x')
+  //     return true
+  //
+  //       if (store.game.cells[9])
+  //         return false
+  //
+  //       if(store.game.cells === 'x') {
+  //   }
+  // }
 
   api.gamesUpdate()
     .then(ui.gameUpdateSuccess)
