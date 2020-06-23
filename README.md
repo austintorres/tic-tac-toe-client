@@ -28,3 +28,4 @@ Who does't love the game of Tic-Tac-Toe?
 - I would like to eventually add a 'vs. CPU' mode.
 
 ## Wireframe
+<!--  -->
