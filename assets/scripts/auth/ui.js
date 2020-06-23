@@ -81,8 +81,10 @@ const newGameSuccess = (response) => {
   $('form').trigger('reset')
   $('#game-board').show()
   $('#game-start').text('New game has begun!').show().removeClass().addClass('success')
+  $('#game-winner').hide()
   store.game = response.game
   console.log(response, 'this game started!')
+  store.gameOver = false
 }
 
 const newGameFailure = function () {
@@ -91,6 +93,8 @@ const newGameFailure = function () {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
+
+// const i = $(event.target).attr('data-cell-index')
 
 const gameUpdateSuccess = function (response) {
   console.log(response)
@@ -103,6 +107,12 @@ const gameUpdateSuccess = function (response) {
   } else {
     store.currentPlayer = 'X'
   }
+  $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+  // if (store.game.cells[i] !== '') {
+  //   console.log("Can't put that there!")
+  // } else {
+  //   console.log('Invalid move!')
+  // }
 }
 
 const gameUpdateFailure = function () {

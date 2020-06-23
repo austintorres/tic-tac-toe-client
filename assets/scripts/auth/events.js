@@ -3,7 +3,7 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('./../store')
 const getFormFields = require('../../../lib/get-form-fields.js')
-const cells = ['', '', '', '', '', '', '', '', '']
+// const cells = ['', '', '', '', '', '', '', '', '']
 
 const gameWinnings = [
   [0, 1, 2],
@@ -71,52 +71,46 @@ const onGamesCreate = function (event) {
 const onGamesUpdate = function (event) {
   // prevent refresh
   event.preventDefault()
-  store.game.cells[$(event.target).data('cell-index')] = store.currentPlayer
+  store.cells[$(event.target).data('cell-index')] = store.currentPlayer
   store.currentIndex = $(event.target).data('cell-index')
   console.log(store.currentIndex)
   $(event.target).text(store.currentPlayer)
+  console.log(store.cells)
+  if (store.cells[0] === store.currentPlayer && store.cells[1] === store.currentPlayer && store.cells[2] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[3] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[5] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[6] === store.currentPlayer && store.cells[7] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[0] === store.currentPlayer && store.cells[3] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[6] === store.currentPlayer && store.cells[7] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[1] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[7] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[2] === store.currentPlayer && store.cells[5] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[0] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+    store.gameOver = true
+  } else if (store.cells[2] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
+    store.gameOver = true
 
-  // if (store.game.cells[0] === 'x' && store.game.cells[1] === 'x' && store.game.cells[2] === 'x') {
-  //   return true
-  // } else {
-  //   (store.game.cells[3] === 'x' && store.game.cells[4] === 'x' && store.game.cells[5] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[6] === 'x' && store.game.cells[7] === 'x' && store.game.cells[8] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[0] === 'x' && store.game.cells[3] === 'x' && store.game.cells[6] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[6] === 'x' && store.game.cells[7] === 'x' && store.game.cells[8] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[1] === 'x' && store.game.cells[4] === 'x' && store.game.cells[7] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[2] === 'x' && store.game.cells[5] === 'x' && store.game.cells[8] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[0] === 'x' && store.game.cells[4] === 'x' && store.game.cells[8] === 'x')
-  //     return true
-  // } if else {
-  //   (store.game.cells[2] === 'x' && store.game.cells[4] === 'x' && store.game.cells[6] === 'x')
-  //     return true
-  //
-  //       if (store.game.cells[9])
-  //         return false
-  //
-  //       if(store.game.cells === 'x') {
-  //   }
-  // }
+    // if (store.game.cells[9])
+    //   return false
 
+    // if(store.game.cells === 'x') {
+    // }
+  }
+  console.log(store.gameOver)
+  if (store.gameOver) {
+    console.log(store.currentPlayer + ' Wins!')
+  }
   api.gamesUpdate()
     .then(ui.gameUpdateSuccess)
     .catch(ui.gameUpdateFailure)
 }
 
 module.exports = {
-  cells: cells,
   gamingWinnings: gameWinnings,
   onSignUp: onSignUp,
   onSignIn: onSignIn,

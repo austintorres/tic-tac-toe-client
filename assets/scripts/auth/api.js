@@ -107,7 +107,7 @@ const gamesUpdate = function () {
           index: store.currentIndex,
           value: store.currentPlayer
         },
-        over: false
+        over: store.gameOver
       }
     }
   })

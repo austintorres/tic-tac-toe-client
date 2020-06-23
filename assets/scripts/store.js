@@ -2,7 +2,9 @@
 
 const store = {
   currentPlayer: 'x',
-  currentIndex: ''
+  currentIndex: '',
+  cells: ['', '', '', '', '', '', '', '', ''],
+  gameOver: false
 }
 
 module.exports = store
