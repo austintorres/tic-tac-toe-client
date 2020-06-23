@@ -8,7 +8,7 @@ Who does't love the game of Tic-Tac-Toe?
 
 ## Planning Story
 
-### User Stories
+#### User Stories
 - As a user I want to sign up/sign in.
 - As a user I want to change password if needed and sign out.
 - As a user I want to start a game.
@@ -16,14 +16,14 @@ Who does't love the game of Tic-Tac-Toe?
 - As a user I want to reset the game board.
 - As a user I want to see my game stats during and after the game.
 
-### Technologies Used
+#### Technologies Used
 - HTML/CSS
 - JavaScipt
 - jQuery
 - AJAX
 - Bootstrap
 
-### Unsolved Problems
+#### Unsolved Problems
 - Still need to fix game board decisions.
 - I would like to eventually add a 'vs. CPU' mode.
 
