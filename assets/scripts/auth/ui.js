@@ -107,13 +107,8 @@ const gameUpdateSuccess = function (response) {
   } else {
     store.currentPlayer = 'X'
   }
-  $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
-  // if (store.game.cells[i] !== '') {
-  //   console.log("Can't put that there!")
-  // } else {
-  //   console.log('Invalid move!')
-  // }
 }
+// $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
 
 const gameUpdateFailure = function () {
   console.log(gameUpdateFailure)

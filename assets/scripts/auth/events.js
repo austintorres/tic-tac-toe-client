@@ -95,6 +95,10 @@ const onGamesUpdate = function (event) {
   } else if (store.cells[2] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
     store.gameOver = true
 
+    // if (store.cells !== '') {
+    //   console.log(`It's a tie!`)
+    //   store.gameOver = true
+    // }
     // if (store.game.cells[9])
     //   return false
 
