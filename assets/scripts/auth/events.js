@@ -60,6 +60,7 @@ const onGamesCreate = function (event) {
   // prevent refresh
   event.preventDefault()
   $('.tile').text('')
+  $('#game-winner').hide()
   store.currentPlayer = 'X'
   const form = event.target
   const data = getFormFields(form)
@@ -71,47 +72,52 @@ const onGamesCreate = function (event) {
 const onGamesUpdate = function (event) {
   // prevent refresh
   event.preventDefault()
-  store.cells[$(event.target).data('cell-index')] = store.currentPlayer
-  store.currentIndex = $(event.target).data('cell-index')
-  console.log(store.currentIndex)
-  $(event.target).text(store.currentPlayer)
-  console.log(store.cells)
-  if (store.cells[0] === store.currentPlayer && store.cells[1] === store.currentPlayer && store.cells[2] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[3] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[5] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[6] === store.currentPlayer && store.cells[7] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[0] === store.currentPlayer && store.cells[3] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[6] === store.currentPlayer && store.cells[7] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[1] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[7] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[2] === store.currentPlayer && store.cells[5] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[0] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
-    store.gameOver = true
-  } else if (store.cells[2] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
-    store.gameOver = true
+  if (store.cells[$(event.target).data('cell-index')] === '' && store.gameOver === false) {
+    store.cells[$(event.target).data('cell-index')] = store.currentPlayer
+    store.currentIndex = $(event.target).data('cell-index')
+    console.log(store.currentIndex)
+    $(event.target).text(store.currentPlayer)
+    console.log(store.cells)
+    if (store.cells[0] === store.currentPlayer && store.cells[1] === store.currentPlayer && store.cells[2] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[3] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[5] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[6] === store.currentPlayer && store.cells[7] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[0] === store.currentPlayer && store.cells[3] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[6] === store.currentPlayer && store.cells[7] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[1] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[7] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[2] === store.currentPlayer && store.cells[5] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[0] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[8] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells[2] === store.currentPlayer && store.cells[4] === store.currentPlayer && store.cells[6] === store.currentPlayer) {
+      store.gameOver = true
+      $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
+    } else if (store.cells.every(currentValue => currentValue !== '')) {
+      $('#game-winner').text('Tie Game!!').show()
+      store.gameOver = true
+      console.log('Its a tie!')
+    }
+    console.log(store.gameOver)
 
-    // if (store.cells !== '') {
-    //   console.log(`It's a tie!`)
-    //   store.gameOver = true
-    // }
-    // if (store.game.cells[9])
-    //   return false
-
-    // if(store.game.cells === 'x') {
-    // }
+    api.gamesUpdate()
+      .then(ui.gameUpdateSuccess)
+      .catch(ui.gameUpdateFailure)
+  } else {
+    console.log('Invalid Move!')
   }
-  console.log(store.gameOver)
-  if (store.gameOver) {
-    console.log(store.currentPlayer + ' Wins!')
-  }
-  api.gamesUpdate()
-    .then(ui.gameUpdateSuccess)
-    .catch(ui.gameUpdateFailure)
 }
 
 module.exports = {

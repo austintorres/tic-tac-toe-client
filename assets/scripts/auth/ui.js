@@ -83,7 +83,8 @@ const newGameSuccess = (response) => {
   $('#game-start').text('New game has begun!').show().removeClass().addClass('success')
   $('#game-winner').hide()
   store.game = response.game
-  console.log(response, 'this game started!')
+  store.cells = response.game.cells
+  console.log(response, 'Game started!')
   store.gameOver = false
 }
 
@@ -101,6 +102,7 @@ const gameUpdateSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Move was valid!')
   $('#message').show().removeClass().addClass('success')
+  $('#game-start').hide()
   store.game = response.game
   if (store.currentPlayer === 'X') {
     store.currentPlayer = 'O'
@@ -108,18 +110,13 @@ const gameUpdateSuccess = function (response) {
     store.currentPlayer = 'X'
   }
 }
-// $('#game-winner').text(`${store.currentPlayer} Wins!`).show()
 
 const gameUpdateFailure = function () {
   console.log(gameUpdateFailure)
   $('form').trigger('reset')
-  $('#message').text('Move not valid!')
-  $('#message').show().removeClass().addClass('failure')
+  $('#message').text('Move not valid!').show().addClass('failure')
+  // $('#message').show().removeClass().addClass('failure')
 }
-
-// const checkTurn = function () {
-//     if(store.game.cells[i])
-// }
 
 module.exports = {
   createSuccess: createSuccess,
