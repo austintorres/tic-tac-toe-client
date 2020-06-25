@@ -24,8 +24,9 @@ Who does't love the game of Tic-Tac-Toe?
 - Bootstrap
 
 #### Unsolved Problems
-- Still need to fix game board decisions.
+- Still need to add game stats.
 - I would like to eventually add a 'vs. CPU' mode.
+- I would like to add a customizable experience.
 
 ## Wireframe
 <!--  -->
