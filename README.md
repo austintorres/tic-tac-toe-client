@@ -29,4 +29,4 @@ Who does't love the game of Tic-Tac-Toe?
 - I would like to add a customizable experience.
 
 ## Wireframe
-<!--  -->
+![Wireframe Picture](https://i.imgur.com/4LGZ77u.jpg)
