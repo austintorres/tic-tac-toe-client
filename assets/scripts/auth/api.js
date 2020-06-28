@@ -124,6 +124,16 @@ const gamesDelete = function () {
   })
 }
 
+const gamesStats = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + /games/,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   userCreate: userCreate,
   userSignIn: userSignIn,
@@ -133,5 +143,6 @@ module.exports = {
   gamesIndex: gamesIndex,
   gamesShow: gamesShow,
   gamesUpdate: gamesUpdate,
-  gamesDelete: gamesDelete
+  gamesDelete: gamesDelete,
+  gamesStats: gamesStats
 }

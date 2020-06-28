@@ -11,17 +11,21 @@ const authEvents = require('./auth/events')
 // const gameBoard = require('./games/game-board')
 
 $(() => {
-  // your JS code goes here
+  // User Docs
+  $('#change-password').hide()
+  $('#sign-out').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
-  $('#change-password').on('submit', authEvents.onChangePw)
-  $('#change-password').hide()
   $('#sign-out').on('submit', authEvents.onSignOut)
-  $('#sign-out').hide()
-  $('#new-game').on('submit', authEvents.onGamesCreate)
+  $('#change-password').on('submit', authEvents.onChangePw)
+
+  // Game Docs/Events
   $('#new-game').hide()
   $('#game-stats').hide()
   $('#game-board').hide()
-  $('.tile').on('click', authEvents.onGamesUpdate)
   $('#game-title').hide()
+  $('.tile').on('click', authEvents.onGamesUpdate)
+  $('#new-game').on('submit', authEvents.onGamesCreate)
+  $('#stats').hide()
+  $('#stats').on('submit', authEvents.onGetGameStats)
 })

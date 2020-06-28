@@ -116,8 +116,16 @@ const onGamesUpdate = function (event) {
       .then(ui.gameUpdateSuccess)
       .catch(ui.gameUpdateFailure)
   } else {
-    console.log('Invalid Move!')
+    $('#message').text('Move was invalid!')
+    $('#message').show().removeClass().addClass('failure')
   }
+}
+
+const onGetGameStats = function (event) {
+  event.preventDefault()
+  api.gamesStats()
+    .then(ui.gameStatsSuccess)
+    .catch(ui.gameStatsFailure)
 }
 
 module.exports = {
@@ -127,5 +135,6 @@ module.exports = {
   onChangePw: onChangePw,
   onSignOut: onSignOut,
   onGamesCreate: onGamesCreate,
-  onGamesUpdate: onGamesUpdate
+  onGamesUpdate: onGamesUpdate,
+  onGetGameStats: onGetGameStats
 }

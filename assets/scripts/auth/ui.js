@@ -24,7 +24,7 @@ const signInSuccess = function (response) {
   $('#sign-in').hide()
   $('#change-password').show()
   $('#sign-out').show()
-  $('#game-stats').show()
+  $('#stats').show()
   $('#new-game').show()
   $('#sign-in-message').hide()
   $('#game-title').show()
@@ -68,6 +68,7 @@ const signOutSuccess = function (response) {
   $('#game-title').hide()
   $('#sign-in-message').show()
   $('#game-start').hide()
+  $('#stats').show()
 }
 
 const signOutFailure = function (response) {
@@ -82,6 +83,8 @@ const newGameSuccess = (response) => {
   $('#game-board').show()
   $('#game-start').text('New game has begun!').show().removeClass().addClass('success')
   $('#game-winner').hide()
+  $('#game-stats').hide()
+
   store.game = response.game
   store.cells = response.game.cells
   console.log(response, 'Game started!')
@@ -94,8 +97,6 @@ const newGameFailure = function () {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
-
-// const i = $(event.target).attr('data-cell-index')
 
 const gameUpdateSuccess = function (response) {
   console.log(response)
@@ -111,24 +112,34 @@ const gameUpdateSuccess = function (response) {
   }
 }
 
-const gameUpdateFailure = function () {
-  console.log(gameUpdateFailure)
+const gameUpdateFailure = function (response) {
+  $('#message').text('Move was invalid!')
   $('form').trigger('reset')
-  $('#message').text('Move not valid!').show().addClass('failure')
-  // $('#message').show().removeClass().addClass('failure')
+  $('#message').show().removeClass().addClass('failure')
+}
+
+const gameStatsSuccess = function (response) {
+  console.log(response)
+  $('#game-stats').text('Your total games played: ' + response.games.length).show()
+}
+
+const gameStatsFailure = function () {
+  $('#game-stats').text('Cannot retrieve your game stats')
 }
 
 module.exports = {
-  createSuccess: createSuccess,
-  createFailure: createFailure,
-  signInSuccess: signInSuccess,
-  signInFailure: signInFailure,
-  changePwSuccess: changePwSuccess,
-  changePwFailure: changePwFailure,
-  signOutSuccess: signOutSuccess,
-  signOutFailure: signOutFailure,
-  newGameSuccess: newGameSuccess,
-  newGameFailure: newGameFailure,
-  gameUpdateSuccess: gameUpdateSuccess,
-  gameUpdateFailure: gameUpdateFailure
+  createSuccess,
+  createFailure,
+  signInSuccess,
+  signInFailure,
+  changePwSuccess,
+  changePwFailure,
+  signOutSuccess,
+  signOutFailure,
+  newGameSuccess,
+  newGameFailure,
+  gameUpdateSuccess,
+  gameUpdateFailure,
+  gameStatsSuccess,
+  gameStatsFailure
 }
