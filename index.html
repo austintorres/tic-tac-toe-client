@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe Project</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand">Tic Tac Toe Game</a>
+      </nav>
+
+      <h1 id="sign-in-message">Please Sign-In</h1>
+      <h1 id='game-title'>Now Let's Play Some Tic-Tac-Toe</h1>
+
+      <!-- sign up form -->
+      <section>
+      <form id="sign-up">
+        <input required placeholder="Enter e-mail here" type="text" name="credentials[email]">
+        <input placeholder="Enter password here" type="password" name="credentials[password]">
+        <input placeholder="Re-enter password" type="password" name="credentials[password_confirmation]">
+        <button type="submit" class="btn btn-dark">Sign Up</button>
+      </form>
+      </section>
+
+      <!-- sign in form -->
+      <section>
+      <form id="sign-in">
+        <input required placeholder="Enter e-mail here" type="text" name="credentials[email]">
+        <input placeholder="Enter password here" type="password" name="credentials[password]">
+        <button type="submit" class="btn btn-dark">Sign In</button>
+      </form>
+      </section>
+
+      <!-- change password form -->
+      <section>
+      <form id="change-password">
+        <input required placeholder="Old password" type="password" name="passwords[old]">
+        <input placeholder="New password" type="password" name="passwords[new]">
+        <button type="submit" class="btn btn-dark">Change Password</button>
+      </form>
+      </section>
+
+      <!-- sign out button -->
+      <section>
+        <form id="sign-out">
+          <button type="submit" class="btn btn-dark">Sign Out</button>
+        </form>
+      </section>
+
+      <!-- guest login -->
+      <p id='guest-msg'>Please use our guest login below!<br /><strong>E-mail:</strong> guest@guest.com | <strong>Password:</strong> 123</p>
+
+      <p id='message'></p>
+
+      <!-- players turn message -->
+      <p id='player-turn'></p>
+      <!-- new game has begun -->
+      <h5 id='game-start'></h5>
+      <!-- game winner -->
+      <p id='game-winner'></p>
+
+      <!-- game board -->
+      <div class="game-container" id="game-board">
+        <div class="row">
+          <div class="tile" data-cell-index='0'></div>
+          <div class="tile" data-cell-index='1'></div>
+          <div class="tile" data-cell-index='2'></div>
+          <div class="tile" data-cell-index='3'></div>
+          <div class="tile" data-cell-index='4'></div>
+          <div class="tile" data-cell-index='5'></div>
+          <div class="tile" data-cell-index='6'></div>
+          <div class="tile" data-cell-index='7'></div>
+          <div class="tile" data-cell-index='8'></div>
+        </div>
+      </div>
+
+      <section>
+        <!-- new game button -->
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <form id='new-game'>
+            <button type="submit" class="btn btn-dark">New Game</button>
+          </form>
+          <!-- game stats/history button -->
+          <form id='stats'>
+            <button type="submit" class="btn btn-dark">Game Stats</button>
+            <p id='game-stats'></p>
+          </form>
+        </div>
+    </section>
+    </body>
+</html>
