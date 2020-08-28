@@ -4,6 +4,7 @@ const createSuccess = function () {
   $('form').trigger('reset')
   $('#message').text('Sign up was successful!')
   $('#message').show().removeClass().addClass('success')
+  $('#game-winner').hide()
   console.log('createSuccess')
 }
 
@@ -28,6 +29,8 @@ const signInSuccess = function (response) {
   $('#new-game').show()
   $('#sign-in-message').hide()
   $('#game-title').show()
+  $('#guest-msg').hide()
+  $('#game-winner').hide()
 }
 
 const signInFailure = function () {
@@ -42,6 +45,7 @@ const changePwSuccess = function (response) {
   $('#message').text('Password change successful!')
   $('#message').show().removeClass().addClass('success')
   $('#play-game').show()
+  $('#game-winner').hide()
 }
 
 const changePwFailure = function () {
@@ -69,6 +73,8 @@ const signOutSuccess = function (response) {
   $('#sign-in-message').show()
   $('#game-start').hide()
   $('#stats').show()
+  $('#guest-msg').show()
+  $('#game-winner').hide()
 }
 
 const signOutFailure = function (response) {
@@ -84,6 +90,7 @@ const newGameSuccess = (response) => {
   $('#game-start').text('New game has begun!').show().removeClass().addClass('success')
   $('#game-winner').hide()
   $('#game-stats').hide()
+  $('#guest-msg').hide()
 
   store.game = response.game
   store.cells = response.game.cells
@@ -104,6 +111,7 @@ const gameUpdateSuccess = function (response) {
   $('#message').text('Move was valid!')
   $('#message').show().removeClass().addClass('success')
   $('#game-start').hide()
+  $('#guest-msg').hide()
   store.game = response.game
   if (store.currentPlayer === 'X') {
     store.currentPlayer = 'O'
